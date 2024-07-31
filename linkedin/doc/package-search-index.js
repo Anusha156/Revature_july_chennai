@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.linkedin"},{"l":"com.linkedin.controller"},{"l":"com.linkedin.view"}];updateSearchResults();

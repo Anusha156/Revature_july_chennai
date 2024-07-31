@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.linkedin","l":"App"},{"p":"com.linkedin","l":"AppTest"},{"p":"com.linkedin.controller","l":"LinkedinController"},{"p":"com.linkedin.controller","l":"LinkedinControllerInterface"},{"p":"com.linkedin.view","l":"LinkedinView"}];updateSearchResults();
