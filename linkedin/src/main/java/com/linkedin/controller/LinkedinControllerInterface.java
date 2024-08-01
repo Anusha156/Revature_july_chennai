@@ -4,4 +4,6 @@ public interface LinkedinControllerInterface {
 
 	void createProfileController();
 
+	void viewProfileController();
+
 }
