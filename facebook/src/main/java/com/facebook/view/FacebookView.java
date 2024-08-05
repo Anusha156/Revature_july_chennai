@@ -12,7 +12,7 @@ public class FacebookView {
 			System.out.println("enter a choice");
 			System.out.println("press 1 login");
 			System.out.println("press 2 for profile");
-			System.out.println("press3  for delete");
+			System.out.println("press 3  for delete");
 			
 			Scanner sc = new Scanner(System.in);
 			int a = sc.nextInt();
@@ -28,7 +28,7 @@ public class FacebookView {
 			case 3 : fc.editController();
 				break;
 				default: System.out.println("invalid");
-					}
+			}
 				
 
 		}
