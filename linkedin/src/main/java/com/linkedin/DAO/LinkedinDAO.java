@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.linkedin.entity.LinkedinUser;
 
@@ -58,8 +60,8 @@ public class LinkedinDAO implements LinkedinDAOInterface {
 			ResultSet res=ps.executeQuery();
 			if(res.next()) {
 				String n=res.getString(1);
-				String p=res.getString(2);
-				String u=res.getString(3);
+				String u=res.getString(2);
+				String p=res.getString(3);
 				
 				l2=new LinkedinUser();
 				l2.setName(n);
@@ -75,8 +77,126 @@ public class LinkedinDAO implements LinkedinDAOInterface {
 		return l2;
 		
 	}
-
+	@Override
+	public List<LinkedinUser> viewAllProfileDAO() {
+		
+		List<LinkedinUser> l1=new ArrayList<LinkedinUser>();
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+			PreparedStatement ps=con.prepareStatement("select * from LinkedinUser");
+			
+			ResultSet res=ps.executeQuery();
+			while(res.next()) {
+				String n=res.getString(1);
+				String e=res.getString(2);
+				String p=res.getString(3);
+				
+				LinkedinUser l2=new LinkedinUser();
+				l2.setName(n);
+				l2.setMail(p);
+				l2.setPassword(e);
+				
+				l1.add(l2);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return l1;
+	}
+	@Override
+	public int editProfileDAO(LinkedinUser lu) {
+		int i=0;
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+		PreparedStatement ps=con.prepareStatement("update linkedinuser set password=?, name=? where email=?");
+		ps.setString(1, lu.getPassword());
+		ps.setString(2, lu.getName());
+		ps.setString(3, lu.getMail());
+		i=ps.executeUpdate();
+		
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
+	public int deleteProfileDAO(LinkedinUser lu) {
+		int i=0;
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+		PreparedStatement ps=con.prepareStatement("delete from linkedinuser where email=?");
+		
+		ps.setString(1, lu.getMail());
+		i=ps.executeUpdate();
+		
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+	@Override
+	public int loginProfileDAO(LinkedinUser lu) {
+		int i=0;
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+		PreparedStatement ps=con.prepareStatement("login from linkedinuser where email=?");
+		
+		ps.setString(1, lu.getMail());
+		i=ps.executeUpdate();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+	@Override
+	public int searchProfileDAO(LinkedinUser lu) {
+		int i=0;
+		try {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+		PreparedStatement ps=con.prepareStatement("search from linkedinuser where email=?");
+		
+		ps.setString(1, lu.getMail());
+		i=ps.executeUpdate();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

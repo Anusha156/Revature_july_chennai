@@ -1,5 +1,6 @@
 package com.linkedin.controller;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.linkedin.entity.LinkedinUser;
@@ -62,8 +63,8 @@ public class LinkedinController implements LinkedinControllerInterface {
 		if(l1!=null) {
 			System.out.println("Your profile is ");
 			System.out.println("Name is -->"+l1.getName());
-			System.out.println("Mail is -->"+l1.getMail());
 			System.out.println("Password is -->"+l1.getPassword());
+			System.out.println("Mail is -->"+l1.getMail());
 		}
 		else {
 			throw new profileNotFoundException("Profile not found for given mail id "+email);
@@ -77,4 +78,142 @@ public class LinkedinController implements LinkedinControllerInterface {
 		
 	}
 
+	@Override
+	public void viewAllProfileController() {
+		// to maintain low coupling we are storing in interface
+		LinkedinServiceInterface ls=new LinkedinService();
+		List<LinkedinUser> l2= ls.viewAllProfileService();  //List<LinkedinUser> this is known as generic collection
+        
+		for(LinkedinUser vv:l2) {
+			System.out.println("************************");
+			System.out.println("Your profile is ");
+			System.out.println("Name is -->"+vv.getName());
+			System.out.println("Mail is -->"+vv.getMail());
+			System.out.println("Password is -->"+vv.getPassword());
+			
+		}
+	
+	
+	}
+
+	
+
+	public void editProfileController() {
+        Scanner s=new Scanner(System.in);
+		
+		System.out.println("enter email to edit profile");
+		String email=s.next();
+		
+		LinkedinUser lu=new LinkedinUser();
+		lu.setMail(email);
+		
+		LinkedinServiceInterface ls=new LinkedinService();
+		LinkedinUser l1=ls.viewProfileService(lu);
+		try {
+		if(l1!=null) {
+			System.out.println("Your old profile is ");
+			System.out.println("Name is -->"+l1.getName());
+			System.out.println("Mail is -->"+l1.getMail());
+			System.out.println("Password is -->"+l1.getPassword());
+			
+			System.out.println("press 1 to change password");
+			System.out.println("press 2 to change name");
+			System.out.println("Enter choice");
+			int c=s.nextInt();
+			
+			switch(c) {
+			case 1:System.out.println("Enter new password");
+			       String npassword=s.next();
+			       l1.setPassword(npassword);
+			       int i=ls.editProfileService(l1);
+			       
+			       if(i>0) {
+			    	   System.out.println("password changed");
+			       }
+				break;
+			case 2:System.out.println("Enter name");
+			       String pname=s.next();
+			       l1.setName(pname);
+			       int i1=ls.editProfileService(l1);
+			       
+			       if(i1>0) {
+			    	   System.out.println("Name changed");
+			       }
+				break;
+			default: System.out.println("wrong choice");
+			
+			}
+		}
+		else {
+			throw new profileNotFoundException("Profile not found for given mail id "+email);
+			
+			
+		}
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	public void deleteProfileController() {
+        Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter email to delete profile");
+		String email=sc.next();
+		
+		LinkedinUser lu=new LinkedinUser();
+		lu.setMail(email);
+		
+		LinkedinServiceInterface ls=new LinkedinService();
+		int ll=ls.deleteProfileService(lu);
+		if(ll>0) {
+			System.out.println("profile deleted");
+		}
+		
+	}
+
+	@Override
+	public void loginProfileController() {
+		Scanner s=new Scanner(System.in);
+		System.out.println("Enter email to login profile");
+		String email=s.next();
+		
+		LinkedinUser lu=new LinkedinUser();
+		lu.setMail(email);
+		
+		LinkedinServiceInterface ls=new LinkedinService();
+		int i=ls.loginProfileService(lu);
+		
+		if(i>0) {
+			System.out.println("Successfully login completed");
+		}
+		
+		
+		
+		
+		
+	}
+
+	@Override
+	public void searchProfileController() {
+		Scanner s=new Scanner(System.in);
+		System.out.println("Enter email to search profile");
+		String email=s.next();
+		
+		LinkedinUser lu=new LinkedinUser();
+		lu.setMail(email);
+		
+		LinkedinServiceInterface ls=new LinkedinService();
+		int i=ls.searchProfileService(lu);
+		
+		if(i>0) {
+			System.out.println("Successfully searched");
+		}
+		
+		
+	}
+
+	
+	
 }

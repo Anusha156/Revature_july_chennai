@@ -6,4 +6,19 @@ public interface LinkedinControllerInterface {
 
 	void viewProfileController();
 
+	void viewAllProfileController();
+	
+    void deleteProfileController();
+	
+	void searchProfileController();
+
+	void loginProfileController();
+
+	void editProfileController();
+
+
+	
+
+
+
 }
