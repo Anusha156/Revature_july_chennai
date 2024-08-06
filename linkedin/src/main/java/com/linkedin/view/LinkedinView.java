@@ -1,24 +1,26 @@
 package com.linkedin.view;
 
-import java.util.Scanner;
 
+import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.linkedin.controller.LinkedinController;
 import com.linkedin.controller.LinkedinControllerInterface;
 
 public class LinkedinView {
+	private static Logger log=Logger.getLogger("LinkedinView");
 	public static void main(String[] args) {
         String ss="y";
 		while(ss.equals("y")) {
 		
-		System.out.println("***********MAIN MENU***********");
-		System.out.println("press 1 to continue");
-		System.out.println("press 2 to continue");
-		System.out.println("press 3 to continue");
-		System.out.println("press 4 to continue");
-		System.out.println("press 5 to continue");
-		System.out.println("press 6 to continue");
-		System.out.println("press 7 to continue");
+		log.info("***********MAIN MENU***********");
+		log.info("press 1 to continue");
+		log.info("press 2 to continue");
+		log.info("press 3 to continue");
+		log.info("press 4 to continue");
+		log.info("press 5 to continue");
+		log.info("press 6 to continue");
+		log.info("press 7 to continue");
 		
 		System.err.println("i am error");
 		Scanner s=new Scanner(System.in);

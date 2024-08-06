@@ -6,7 +6,7 @@ import com.linkedin.controller.LinkedinControllerInterface;
 public class LinkedinControllerFactory {
 	private LinkedinControllerFactory() {
 	}
-	public LinkedinControllerInterface createObject(String n) {
+	public static LinkedinControllerInterface createObject(String n) {
 		if(n.equals("user")) {
 			return new LinkedinController();
 		}

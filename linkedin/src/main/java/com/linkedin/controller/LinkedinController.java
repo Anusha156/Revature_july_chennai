@@ -1,15 +1,20 @@
 package com.linkedin.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.linkedin.entity.LinkedinUser;
 import com.linkedin.exception.profileNotFoundException;
 import com.linkedin.service.LinkedinService;
 import com.linkedin.service.LinkedinServiceInterface;
+import com.linkedin.utility.LinkedinServiceFactory;
 
 
 public class LinkedinController implements LinkedinControllerInterface {
+	
+	Logger log=Logger.getLogger("LinkdinController");
 
 	public void createProfileController() {
 		// TODO Auto-generated method stub
@@ -35,11 +40,11 @@ public class LinkedinController implements LinkedinControllerInterface {
 		//step2 end
 		//step3 create object of service via interface to maintain low coupling
 		
-		LinkedinServiceInterface ls=new LinkedinService();
+		LinkedinServiceInterface ls=LinkedinServiceFactory.createObject("user");
 		int i=ls.createProfileService(lu);
 		
 		if(i>0) {
-			System.out.println("profile created");
+			log.info("profile created"+LocalDateTime.now());
 		}
 		else {
 			System.err.println("profile rejected");
