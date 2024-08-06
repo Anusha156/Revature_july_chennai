@@ -13,14 +13,14 @@ public class LinkedinView {
         String ss="y";
 		while(ss.equals("y")) {
 		
-		log.info("***********MAIN MENU***********");
-		log.info("press 1 to continue");
-		log.info("press 2 to continue");
-		log.info("press 3 to continue");
-		log.info("press 4 to continue");
-		log.info("press 5 to continue");
-		log.info("press 6 to continue");
-		log.info("press 7 to continue");
+		System.out.println("***********MAIN MENU***********");
+		System.out.println("press 1 to continue");
+		System.out.println("press 2 to continue");
+		System.out.println("press 3 to continue");
+		System.out.println("press 4 to continue");
+		System.out.println("press 5 to continue");
+		System.out.println("press 6 to continue");
+		System.out.println("press 7 to continue");
 		
 		System.err.println("i am error");
 		Scanner s=new Scanner(System.in);
