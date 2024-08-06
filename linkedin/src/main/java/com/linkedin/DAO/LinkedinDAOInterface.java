@@ -14,7 +14,7 @@ public interface LinkedinDAOInterface {
 	
 	int loginProfileDAO(LinkedinUser lu);
 
-	int searchProfileDAO(LinkedinUser lu);
+	List<LinkedinUser> searchProfileDAO(LinkedinUser lu);
 
 	int editProfileDAO(LinkedinUser lu);
 	

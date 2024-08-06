@@ -48,7 +48,7 @@ public class LinkedinService implements LinkedinServiceInterface {
 		
 	}
 
-	public int searchProfileService(LinkedinUser lu) {
+	public List<LinkedinUser> searchProfileService(LinkedinUser lu) {
 		LinkedinDAOInterface ld=new LinkedinDAO();
 		return ld.searchProfileDAO(lu);
 		

@@ -198,17 +198,22 @@ public class LinkedinController implements LinkedinControllerInterface {
 	@Override
 	public void searchProfileController() {
 		Scanner s=new Scanner(System.in);
-		System.out.println("Enter email to search profile");
-		String email=s.next();
+		System.out.println("Enter name to search profile");
+		String name=s.next();
 		
 		LinkedinUser lu=new LinkedinUser();
-		lu.setMail(email);
+		lu.setName(name);
 		
 		LinkedinServiceInterface ls=new LinkedinService();
-		int i=ls.searchProfileService(lu);
+		List<LinkedinUser> l2=ls.searchProfileService(lu);
 		
-		if(i>0) {
-			System.out.println("Successfully searched");
+		for(LinkedinUser vv:l2) {
+			System.out.println("************************");
+			System.out.println("Your profile is ");
+			System.out.println("Name is -->"+vv.getName());
+			System.out.println("Mail is -->"+vv.getMail());
+			System.out.println("Password is -->"+vv.getPassword());
+			
 		}
 		
 		

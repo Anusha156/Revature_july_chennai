@@ -18,7 +18,7 @@ public interface LinkedinServiceInterface {
 
 	int loginProfileService(LinkedinUser lu);
 
-	int searchProfileService(LinkedinUser lu);
+	List<LinkedinUser> searchProfileService(LinkedinUser lu);
 
 
 	
