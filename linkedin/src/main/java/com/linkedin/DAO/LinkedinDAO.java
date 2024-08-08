@@ -1,13 +1,16 @@
 package com.linkedin.DAO;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.linkedin.entity.LinkedinUser;
+import com.linkedin.utility.DatabaseConnection;
 
 public class LinkedinDAO implements LinkedinDAOInterface {
 	
@@ -78,16 +81,22 @@ public class LinkedinDAO implements LinkedinDAOInterface {
 		
 	}
 	@Override
-	public List<LinkedinUser> viewAllProfileDAO() {
+	public List<LinkedinUser> viewAllProfileDAO() {  
 		
-		List<LinkedinUser> l1=new ArrayList<LinkedinUser>();
+		List<LinkedinUser> l1=new ArrayList<LinkedinUser>(); //
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
-			PreparedStatement ps=con.prepareStatement("select * from LinkedinUser");
+			//Class.forName("com.mysql.jdbc.Driver");
+			//Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/revaturechennai","root","root");
+			//PreparedStatement ps=con.prepareStatement("select * from LinkedinUser");
+			//ResultSet res=ps.executeQuery();   
 			
-			ResultSet res=ps.executeQuery();
+			
+			//Statement ps=con.createStatement();
+			//ResultSet res=ps.executeQuery("select * from LinkedinUser");
+			Connection con = DatabaseConnection.getConnection();
+			CallableStatement ps=con.prepareCall("{call anusha}");
+			ResultSet res=ps.executeQuery(); 
 			while(res.next()) {
 				String n=res.getString(1);
 				String e=res.getString(2);

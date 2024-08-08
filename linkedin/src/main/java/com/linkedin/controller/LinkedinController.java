@@ -13,7 +13,7 @@ import com.linkedin.utility.LinkedinServiceFactory;
 
 
 public class LinkedinController implements LinkedinControllerInterface {
-	
+	Logger log=Logger.getLogger("LinkedinController");
 	public void createProfileController() {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
