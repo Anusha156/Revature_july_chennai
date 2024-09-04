@@ -11,5 +11,4 @@ public class DaoFactory {
 		}
 		return new CustomerDAO();
 	}
-
 }

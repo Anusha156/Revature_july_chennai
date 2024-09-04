@@ -59,7 +59,7 @@
                                 %>
                                 <form action="AdminLogin" method="post">
                                     <div class="form-group">
-                                        <label>Email Id.:</label> <input type="text" name="email" class="form-control">
+                                        <label>Email Id.:</label> <input type="email" name="email" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Password.:</label> <input type="password" name="upass" class="form-control">

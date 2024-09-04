@@ -18,6 +18,7 @@
         <script src="js/jquery.easing.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
     </head>
     <body>
         <%
