@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.projects</groupId>
-	<artifactId>quickcart-admin</artifactId>
+	<artifactId>quickcart-retailer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>quickcart-admin</name>
+	<name>quickcart-retailer</name>
 	<description>admin microservice quickcart ecommerce web application</description>
 	<url/>
 	<licenses>
